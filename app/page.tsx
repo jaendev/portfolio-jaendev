@@ -55,14 +55,14 @@ export default function Home() {
       description: "ProfeNet is an educational platform that facilitates the management and visualization of teachers' courses. It allows teachers to view their assigned courses and manage them efficiently, offering an intuitive and modern interface.",
       tags: ["NodeJs", "FastAPI", "NextJS", "Moodle"],
       link: "#",
-      github: "#"
+      github: "https://github.com/jaendev/profenet-portal"
     },
     {
-      title: "Triplan (in progres)",
+      title: "Triplan",
       description: "TriPlan is a personalized travel planning tool that allows users to customize their trips by choosing their destination, duration, trip type, and budget, providing optimized plans based on their preferences.",
       tags: ["NodeJs", "Laravel", "NuxtJS", "Gemini"],
       link: "#",
-      github: "#"
+      github: "https://github.com/jaendev/triplan"
     },
   ];
 
@@ -139,11 +139,21 @@ export default function Home() {
           <div className="felx inline-flex">
             <div className="flex gap-4 mb-4">
               {/* <Image src="/images/BrianJaenProfile.png" alt="Brian Jaen" className="rounded-full shadow-lg" width={120} height={120} /> */}
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
                   <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
                     <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#14b8a6_0%,#0f766e_50%,#14b8a6_100%)]"></span>
                     <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-blue-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">Disponible para trabajar</div>
+                  </span>
+                </a>
+              </div> */}
+              <div className="flex items-center">
+                <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
+                  <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#facc15_0%,#eab308_50%,#facc15_100%)]"></span>
+                    <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-yellow-800 bg-yellow-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
+                      Desarrollador .NET
+                    </div>
                   </span>
                 </a>
               </div>
