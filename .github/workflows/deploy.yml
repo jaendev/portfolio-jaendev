@@ -1,0 +1,11 @@
+name: Deploy Full Stack Application
+run-name: ${{ github.actor }} està desplegant l'aplicació completa 🚀
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-frontend:
+    uses: ./.github/workflows/deployNextJs.yml
+    secrets: inherit

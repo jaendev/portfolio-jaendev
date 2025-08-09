@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import Image from 'next/image'
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
+  const [working] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -138,36 +139,37 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="felx inline-flex">
             <div className="flex gap-4 mb-4">
-              {/* <Image src="/images/BrianJaenProfile.png" alt="Brian Jaen" className="rounded-full shadow-lg" width={120} height={120} /> */}
-              {/* <div className="flex items-center">
-                <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
-                  <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
-                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#14b8a6_0%,#0f766e_50%,#14b8a6_100%)]"></span>
-                    <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-blue-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">Disponible para trabajar</div>
-                  </span>
-                </a>
-              </div> */}
-              <div className="flex items-center">
-                <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
-                  <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
-                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#facc15_0%,#eab308_50%,#facc15_100%)]"></span>
-                    <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-yellow-800 bg-yellow-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
-                      Desarrollador .NET
-                    </div>
-                  </span>
-                </a>
-              </div>
+              {working ? (
+                <div className="flex items-center">
+                  <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
+                    <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+                      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#facc15_0%,#eab308_50%,#facc15_100%)]"></span>
+                      <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-yellow-800 bg-yellow-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
+                        .NET Developer
+                      </div>
+                    </span>
+                  </a>
+                </div>
+              ) : (
+                <div className="flex items-center">
+                  <a href="https://www.linkedin.com/in/brian-ja%C3%A9n-medina-513272252" target="_blank">
+                    <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+                      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#14b8a6_0%,#0f766e_50%,#14b8a6_100%)]"></span>
+                      <div className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-blue-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">Available to work</div>
+                    </span>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <h1 className="text-xl md:text-4xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent mb-2">
-            Hey, soy Brian
+            Hello! I'm Brian
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 px-4">
-            Desarrollador, creando soluciones digitales desde Barcelona, España 🇪🇸.
-            Especializandome en el desarrollo de aplicaciones web.
+            Web developer creating digital solutions from Barcelona, Spain 🇪🇸.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90" onClick={isMobile ? handleClickMobile : handleClickDesktop} >
+            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90" onClick={() => window.open("https://mail.google.com/mail/?view=cm&fs=1&to=infobrian03@gmail.com", "_blank")} >
               <Mail className="mr-2 h-4 w-4" />
               Contact Me
             </Button>
@@ -202,7 +204,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" className="container mx-auto px-4 md:px-6 py-16 md:py-20 bg-secondary/50 backdrop-blur-sm">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Habilidades & Tecnologías</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Technologies & Skills</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="border-2 border-primary/10 p-4 md:p-6 rounded-lg">
             <h1 className="text-xl md:text-4xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent mb-4 text-center">Frontend</h1>
@@ -269,7 +271,7 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id="projects" className="container mx-auto px-4 md:px-6 py-16 md:py-20">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Proyectos</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project) => (
             <Card key={project.title} className="bg-card/50 backdrop-blur-sm hover:shadow-lg hover:shadow-primary/10 transition-all border-primary/10">
@@ -321,13 +323,13 @@ export default function Home() {
       <section id="about" className="container mx-auto mb-8 px-4 md:px-6 py-16 md:py-20 bg-secondary/50 backdrop-blur-sm">
         <div className="md:grid grid-cols-2 gap-8">
           <div className="max-w-xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Sobre mí</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">About me</h2>
             <div className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8 [&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
               <p>
-                Me llamo Brian, pero mis amigos suelen llamarme Bri. <strong>Comencé en la programación hace dos años con Java</strong>, y desde entonces, cada nuevo desafío que resolvía aumentaba aún más mi pasión por este mundo tan extenso.
+                My name is Brian. <strong>I started programming two years ago with Java</strong>, and since then, every new challenge I've solved has only further fueled my passion for this vast world.
               </p>
               <p>
-                Actualmente,<strong> he desarrollado proyectos</strong> como Syncblend, Triplan y ProfeNet, diseñados para mejorar la navegación y sobretodo <strong>para resolver problemas de clientes del mundo real.</strong>
+                At the moment, I've developed projects such as Syncblend, Triplan, and ProfeNet, designed to improve navigation and, most importantly, <strong> solve real-world customer problems</strong>.
               </p>
             </div>
           </div>

@@ -40,28 +40,28 @@ export function Navbar() {
               className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
               onClick={() => scrollToSection("skills")}
             >
-              Habilidades/Tecnologías
+              Technologies/Skills
             </Button>
             <Button
               variant="ghost"
               className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
               onClick={() => scrollToSection("projects")}
             >
-              Proyectos
+              Projects
             </Button>
             <Button
               variant="ghost"
               className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
               onClick={() => scrollToSection("about")}
             >
-              Sobre mí
+              About me
             </Button>
             <Button
               variant="ghost"
               className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
               onClick={() => window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=infobrian03@gmail.com`)}
             >
-              Contacto
+              Contact me
             </Button>
             <ThemeToggle />
           </div>
@@ -91,28 +91,28 @@ export function Navbar() {
                 className="w-full text-left text-muted-foreground hover:text-foreground hover:bg-primary/10"
                 onClick={() => scrollToSection("skills")}
               >
-                Habilidades/Tecnologías
+                Technologies/Skills
               </Button>
               <Button
                 variant="ghost"
                 className="w-full text-left text-muted-foreground hover:text-foreground hover:bg-primary/10"
                 onClick={() => scrollToSection("projects")}
               >
-                Proyectos
+                Projects
               </Button>
               <Button
                 variant="ghost"
                 className="w-full text-left text-muted-foreground hover:text-foreground hover:bg-primary/10"
                 onClick={() => scrollToSection("about")}
               >
-                Sobre mí
+                About me
               </Button>
               <Button
                 variant="ghost"
                 className="w-full text-left text-muted-foreground hover:text-foreground hover:bg-primary/10"
                 onClick={() => window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=infobrian03@gmail.com`)}
               >
-                Contacto
+                Contact me
               </Button>
             </div>
           </div>
