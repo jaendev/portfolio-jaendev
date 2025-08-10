@@ -6,101 +6,51 @@ on:
 jobs:
   build-next:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
-    steps:
-
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: './package-lock.json'
-      
-      - name: Install dependencies
-        run: npm install
-        working-directory: .
-
-      - name: Build Next.js app
-        run: npm run build
-        working-directory: .
-      
-      - name: Upload build artifacts .next
-        uses: actions/upload-artifact@v4
-        with:
-          name: next-build
-          path: |
-            .next
-          include-hidden-files: true
-
-      - name: Upload build artifacts pachages
-        uses: actions/upload-artifact@v4
-        with: 
-          name: package-build
-          path: |
-            ./package.json
-            ./package-lock.json 
-
-  deploy-next:
-    runs-on: ubuntu-latest
-    needs: [build-next]
     
     steps:
-      - name: Download build artifacts next
-        uses: actions/download-artifact@v4
-        with:
-          name: next-build
-          path: .next
-        env: 
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-
-       # Execute comands in the remote server
-      - name: Execute remote commands
-        uses: appleboy/ssh-action@master
-        env:
-          NEXT_PORT: 3010
-        with:
-          host: portfolio.brianjaen.com
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ${{ secrets.SSH_PATH }}
-            echo "Directory .next already exists"
+    - name: Checkout code
+      uses: actions/checkout@v4
       
-      - name: Download build artifacts next
-        uses: actions/download-artifact@v4
-        with:
-          name: package-build
-          path: temp-package
-        env:
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-
-      - name: Deploy to production server
-        run: |
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/prod_key.pem
-            chmod 600 ~/prod_key.pem
-            scp -r -o StrictHostKeyChecking=no -i "~/prod_key.pem" .next/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/.next
-            scp -r -o StrictHostKeyChecking=no -i "~/prod_key.pem" temp-package/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
       
-      # Execute comands in the remote server
-      - name: Execute remote commands
-        uses: appleboy/ssh-action@master
-        with:
-          host: portfolio.brianjaen.com
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ${{ secrets.SSH_PATH }}
-            npm ci --only=production
-            mkdir -p logs
-            pm2 reload ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
-            pm2 save
-            pm2 status
-  
-      - run: echo "This job's status is ${{ job.status }}."
+    - name: Build Next.js
+      run: npm run build
+      
+    - name: Create deployment package
+      run: |
+        mkdir deploy
+        cp -r .next deploy/
+        cp -r public deploy/
+        cp package.json deploy/
+        cp package-lock.json deploy/
+        cp next.config.js deploy/ 2>/dev/null || true
+        
+    - name: Deploy to server
+      uses: appleboy/scp-action@v0.1.5
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "deploy/*"
+        target: "/var/www/html/portfolio/"
+        strip_components: 1
+        rm: true
+        
+    - name: Install production dependencies and start
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd /var/www/html/portfolio/
+          npm ci --only=production
+          pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
+          pm2 save
