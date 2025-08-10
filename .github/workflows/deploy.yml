@@ -1,5 +1,5 @@
-name: Deploy Full Stack Application
-run-name: ${{ github.actor }} està desplegant l'aplicació completa 🚀
+name: Deploy Web Portfolio
+run-name: ${{ github.actor }} is deploying the web portfolio to production 🚀
 on:
   push:
     branches:
