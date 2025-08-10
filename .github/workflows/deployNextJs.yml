@@ -69,7 +69,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.SSH_PATH }}
-            mkdir .next 2>/dev/null || echo "Directory .next already exists"
+            echo "Directory .next already exists"
       
       - name: Download build artifacts next
         uses: actions/download-artifact@v4
