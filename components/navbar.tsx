@@ -52,6 +52,13 @@ export function Navbar() {
             <Button
               variant="ghost"
               className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
+              onClick={() => scrollToSection("experience")}
+            >
+              Experience
+            </Button>
+            <Button
+              variant="ghost"
+              className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
               onClick={() => scrollToSection("about")}
             >
               About me
@@ -99,6 +106,13 @@ export function Navbar() {
                 onClick={() => scrollToSection("projects")}
               >
                 Projects
+              </Button>
+              <Button
+                variant="ghost"
+                className="text-muted-foreground hover:text-foreground hover:bg-primary/10"
+                onClick={() => scrollToSection("experience")}
+              >
+                Experience
               </Button>
               <Button
                 variant="ghost"

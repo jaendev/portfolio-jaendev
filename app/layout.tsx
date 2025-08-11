@@ -8,6 +8,9 @@ import { Footer } from "@/components/footer"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.ico',
+  },
   title: 'Jaendev',
   description: 'Full Stack Developer Portfolio showcasing projects and skills',
 };

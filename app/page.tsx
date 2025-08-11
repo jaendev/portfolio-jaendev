@@ -7,10 +7,11 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Timeline } from "@/components/timeline";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [working] = useState(true);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [working] = useState<boolean>(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,7 +70,6 @@ export default function Home() {
 
   const frontend = [
     "HTML",
-    "CSS",
     "JavaScript",
     "TypeScript",
     "React",
@@ -95,6 +95,10 @@ export default function Home() {
     "Java",
     "Mysql",
     "MongoDB",
+    "C#",
+    "Express.js",
+    ".NET",
+    "ASP .NET Core",
   ]
 
   const devops = [
@@ -274,8 +278,8 @@ export default function Home() {
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project) => (
-            <Card key={project.title} className="bg-card/50 backdrop-blur-sm hover:shadow-lg hover:shadow-primary/10 transition-all border-primary/10">
-              <CardContent className="p-4 md:p-6">
+            <Card className="hover:shadow-primary/10 transition-all border-primary/10 h-full flex flex-col">
+              <CardContent className="p-4 md:p-6 flex flex-col flex-1">
                 <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-sm md:text-base text-muted-foreground mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
@@ -289,7 +293,7 @@ export default function Home() {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
@@ -301,17 +305,6 @@ export default function Home() {
                       Code
                     </a>
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-primary/20 hover:bg-primary/10"
-                    asChild
-                  >
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </a>
-                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -319,8 +312,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <Timeline />
+
       {/* Contact Section */}
-      <section id="about" className="container mx-auto mb-8 px-4 md:px-6 py-16 md:py-20 bg-secondary/50 backdrop-blur-sm">
+      <section id="about" className="container mx-auto mb-8 px-4 md:px-6 py-16 md:py-20 ">
         <div className="md:grid grid-cols-2 gap-8">
           <div className="max-w-xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">About me</h2>
