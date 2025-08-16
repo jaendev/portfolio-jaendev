@@ -18,14 +18,14 @@ const timelineData: TimelineItem[] = [
     title: ".NET Developer",
     company: "MPM Software",
     date: "May 2025 - Present",
-    description: "Development of enterprise applications using the .NET Framework and ASP.NET Core. Implementation of REST APIs and integration with SQL Server databases.",
+    description: "Development of enterprise applications using .NET Framework and ASP.NET Core. Implementation of REST APIs and SQL Server database integration. Collaborated effectively with senior developers and contributed to code reviews, demonstrating strong learning ability and attention to detail.",
     technologies: ["C#", ".NET", "ASP.NET Core", "SQL Server"]
   },
   {
     title: "Programming Student",
     company: "INS Pedralbes",
     date: "2023 - 2025",
-    description: "I began my career in programming by learning Java as my first language. I later expanded my knowledge to web development with JavaScript, HTML, and CSS.",
+    description: "I began my career in programming by learning Java as my first language. I later expanded my knowledge to web development with JavaScript, HTML, and CSS. I later expanded my knowledge to web development with Vue, Laravel, and TailwindCSS, showcasing adaptability and a genuine passion for continuous learning.",
     technologies: ["Java", "JavaScript", "HTML", "CSS", "Git"]
   }
 ];
@@ -42,7 +42,7 @@ const TimelineItem: React.FC<{ item: TimelineItem; index: number; isVisible: boo
         : 'opacity-0 translate-x-[-50px]'
         }`}
     >
-      {/* Punto animado */}
+      {/* Animeted point*/}
       <div className="relative z-10">
         <div className={`w-4 h-4 bg-primary rounded-full border-4 border-background transition-all duration-500 ${isVisible ? 'scale-100 shadow-lg shadow-primary/30' : 'scale-75'
           }`}>
@@ -52,7 +52,7 @@ const TimelineItem: React.FC<{ item: TimelineItem; index: number; isVisible: boo
 
       {/* Contenido */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 group">
-        {/* Lado izquierdo - Información básica */}
+        {/* Left side - Basci information */}
         <div className="space-y-3">
           <h3 className="text-2xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
             {item.title}
@@ -129,7 +129,7 @@ export const Timeline = () => {
   return (
     <section id='experience' className="container mx-auto px-4 md:px-6 py-16 md:py-20 bg-secondary/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
-        {/* Título de la sección */}
+        {/* Section title*/}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
             Professional Experience
@@ -137,10 +137,10 @@ export const Timeline = () => {
         </div>
 
         <div className="relative" ref={timelineRef}>
-          {/* Línea vertical */}
+          {/* Vertical line */}
           <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-border to-transparent"></div>
 
-          {/* Items del timeline */}
+          {/* Timeline line */}
           <div className="space-y-16">
             {timelineData.map((item, index) => (
               <div key={index} data-index={index}>

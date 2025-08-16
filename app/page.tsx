@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
 import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -65,6 +65,13 @@ export default function Home() {
       tags: ["NodeJs", "Laravel", "NuxtJS", "Gemini"],
       link: "#",
       github: "https://github.com/jaendev/triplan"
+    },
+    {
+      title: "Capture Now",
+      description: "Capture Now is a sophisticated note-taking application built with modern web technologies, demonstrating excellent full-stack development skills and attention to user experience design.",
+      tags: ["NextJS", "Next API", "DrizzleORM", "Tailwind CSS"],
+      link: "https://capture-now.brianjaen.com/",
+      github: "https://github.com/jaendev/capture-now"
     },
   ];
 
@@ -305,6 +312,29 @@ export default function Home() {
                       Code
                     </a>
                   </Button>
+                  {project.link == '#' ? (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 border-primary/20 hover:bg-primary/10"
+                      onClick={isMobile ? handleClickMobile : handleClickDesktop}
+                    >
+                      <Mail className="h-4 w-4 mr-1" />
+                      Contact
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 border-primary/20 hover:bg-primary/10"
+                      asChild
+                    >
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4 mr-1" />
+                        View Project
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
