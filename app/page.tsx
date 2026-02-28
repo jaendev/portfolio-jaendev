@@ -173,9 +173,14 @@ export default function Home() {
               )}
             </div>
           </div>
-          <h1 className="text-xl md:text-4xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent mb-2">
-            Hello! I'm Brian
-          </h1>
+          <div className="flex items-center justify-center gap-2">
+            <h1 className="text-xl md:text-4xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent mb-2">
+              Hello! I'm Brian
+            </h1>
+            <span className="text-2xl md:text-4xl lg:text-4xl animate-wave">
+              👋🏻
+            </span>
+          </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 px-4">
             Web developer creating digital solutions from Barcelona, Spain 🇪🇸.
           </p>
