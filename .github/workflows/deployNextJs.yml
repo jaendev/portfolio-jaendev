@@ -86,11 +86,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_PATH }}
-            # Backup anterior (opcional)
             [ -d .next ] && mv .next .next.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || true
-            mkdir -p .next
-            mkdir -p public
-            mkdir -p logs
             
       # Deploy files to server
       - name: Deploy to production server
