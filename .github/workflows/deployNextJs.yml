@@ -87,6 +87,7 @@ jobs:
           script: |
             cd ${{ secrets.SSH_PATH }}
             [ -d .next ] && mv .next .next.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || true
+            mkdir -p .next
             
       # Deploy files to server
       - name: Deploy to production server
