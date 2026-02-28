@@ -83,6 +83,7 @@ jobs:
           host: portfolio.brianjaen.com
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_PATH }}
             # Backup anterior (opcional)
@@ -98,14 +99,14 @@ jobs:
             chmod 600 ~/prod_key.pem
             
             # Uplod .next
-            scp -r -o StrictHostKeyChecking=no -i "~/prod_key.pem" .next/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/.next/
-            
+            scp -r -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -i "~/prod_key.pem" .next/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/.next/
+
             # Uplod package files
-            scp -r -o StrictHostKeyChecking=no -i "~/prod_key.pem" temp-package/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/
-            
+            scp -r -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -i "~/prod_key.pem" temp-package/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/
+
             # Upload public assets
             if [ -d "temp-public" ]; then
-              scp -r -o StrictHostKeyChecking=no -i "~/prod_key.pem" temp-public/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/public/ 2>/dev/null || true
+              scp -r -P ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -i "~/prod_key.pem" temp-public/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}/public/ 2>/dev/null || true
             fi
             
             # Limpiar archivo de clave
@@ -118,6 +119,7 @@ jobs:
           host: portfolio.brianjaen.com
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_PATH }}
             
