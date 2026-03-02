@@ -48,7 +48,7 @@ export default function Home() {
       title: "Dungeon Game",
       description: "Dungeon Crawler is a 2D adventure game in Phaser, where you explore dungeons, face enemies and collect treasures.",
       tags: ["TypeScript", "Phaser.js", "HTML", "CSS"],
-      link: "#",
+      link: "https://dungeon-crawler.brianjaen.com/",
       github: "https://github.com/jaendev/dungeonGame"
     },
     {
