@@ -24,7 +24,7 @@ const timelineData: TimelineItem[] = [
   {
     title: "Frontend Developer",
     company: "Iris Technologies",
-    date: "June 2024 - Junuary 2025",
+    date: "June 2024 - January 2025",
     description: "Redesigned and modernized a legacy weather radar built with Angular, improving UI/UX and accessibility of internal data visualization tools. Developed a mobile application with React Native and Expo featuring an interactive world map, real-time weather data and reverse geolocation. Implemented SVG-based indicators and daily/weekly historical graphs using the Open-Meteo API with caching to improve query performance.",
     technologies: ["React Native", "NodeJs", "Angular", "Typescript"]
   },
