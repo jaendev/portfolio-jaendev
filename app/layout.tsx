@@ -1,15 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer"
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
   title: 'Jaendev',
   description: 'Full Stack Developer Portfolio showcasing projects and skills',
@@ -22,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={inter.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

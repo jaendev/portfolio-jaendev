@@ -22,6 +22,13 @@ const timelineData: TimelineItem[] = [
     technologies: ["C#", ".NET", "ASP.NET Core", "SQL Server"]
   },
   {
+    title: "Frontend Developer",
+    company: "Iris Technologies",
+    date: "June 2024 - Junuary 2025",
+    description: "Redesigned and modernized a legacy weather radar built with Angular, improving UI/UX and accessibility of internal data visualization tools. Developed a mobile application with React Native and Expo featuring an interactive world map, real-time weather data and reverse geolocation. Implemented SVG-based indicators and daily/weekly historical graphs using the Open-Meteo API with caching to improve query performance.",
+    technologies: ["React Native", "NodeJs", "Angular", "Typescript"]
+  },
+  {
     title: "Programming Student",
     company: "INS Pedralbes",
     date: "2023 - 2025",
@@ -51,7 +58,7 @@ const TimelineItem: React.FC<{ item: TimelineItem; index: number; isVisible: boo
       </div>
 
       {/* Contenido */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 group">
+      <div className="flex-1 glass-card p-5 md:p-7 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 group">
         {/* Left side - Basci information */}
         <div className="space-y-3">
           <h3 className="text-2xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
@@ -127,30 +134,32 @@ export const Timeline = () => {
   }, []);
 
   return (
-    <section id='experience' className="container mx-auto px-4 md:px-6 py-16 md:py-20 bg-secondary/50 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
-        {/* Section title*/}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-            Professional Experience
-          </h2>
-        </div>
+    <section id='experience' className="glass-section py-16 md:py-20">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-6xl mx-auto">
+          {/* Section title*/}
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+              Professional Experience
+            </h2>
+          </div>
 
-        <div className="relative" ref={timelineRef}>
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-border to-transparent"></div>
+          <div className="relative" ref={timelineRef}>
+            {/* Vertical line */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-border to-transparent"></div>
 
-          {/* Timeline line */}
-          <div className="space-y-16">
-            {timelineData.map((item, index) => (
-              <div key={index} data-index={index}>
-                <TimelineItem
-                  item={item}
-                  index={index}
-                  isVisible={visibleItems[index] || false}
-                />
-              </div>
-            ))}
+            {/* Timeline line */}
+            <div className="space-y-16">
+              {timelineData.map((item, index) => (
+                <div key={index} data-index={index}>
+                  <TimelineItem
+                    item={item}
+                    index={index}
+                    isVisible={visibleItems[index] || false}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
