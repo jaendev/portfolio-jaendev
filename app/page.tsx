@@ -72,6 +72,29 @@ export default function Home() {
       link: "https://capture-now.brianjaen.com/",
       github: "https://github.com/jaendev/capture-now"
     },
+    {
+      title: "Game Boy Emulator",
+      description: "A fully-featured Game Boy emulator written in C++ with SDL2, featuring a complete tile-based GPU renderer, memory management system, and successful ROM compatibility. The project demonstrates deep understanding of low-level hardware emulation, graphics pipeline implementation, and the ability to debug complex multi-component systems. Successfully loads and runs commercial titles like Tetris.",
+      tags: ["C++", "SDL2", "Hardware Emulation", "Graphics Pipeline"],
+      link: "#",
+      github: "https://github.com/jaendev/game-boy-emulator"
+    },
+
+    {
+      title: "File Finder CLI",
+      description: "A command-line file search utility written in C, demonstrating systems programming fundamentals and efficient file I/O operations. This project showcases low-level C knowledge and the ability to build performant CLI tools from scratch without external dependencies.",
+      tags: ["C", "CLI", "File I/O", "Systems Programming"],
+      link: "#",
+      github: "https://github.com/jaendev/file-finder-rust"
+    },
+
+    {
+      title: "MinimalOS",
+      description: "An educational 32-bit x86 operating system written in C and assembly, featuring a 512-byte bootloader, interrupt handling, GDT/IDT configuration, PIC programming, and an interactive shell with process management. Demonstrates comprehensive understanding of low-level systems programming, x86 architecture, and OS kernel development.",
+      tags: ["x86 Assembly", "C", "Kernel Development", "QEMU", "Systems Programming"],
+      link: "#",
+      github: "https://github.com/jaendev/minimalOS"
+    }
   ];
 
   const frontend = [
